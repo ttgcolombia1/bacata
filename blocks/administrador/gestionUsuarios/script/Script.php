@@ -14,6 +14,8 @@ $funcion[$indice++]="jquery-te.js";;
 $funcion[$indice++]="select2.js";
 $funcion[$indice++]="select2_locale_es.js";
 $funcion[$indice++]="timepicker.js";
+$funcion[$indice ++] = "jquery.dataTables.js";
+$funcion[$indice ++] = "jquery.dataTables.min.js";
 
 
 $rutaBloque=$this->miConfigurador->getVariableConfiguracion("host");

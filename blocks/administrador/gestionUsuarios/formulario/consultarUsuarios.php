@@ -47,7 +47,7 @@ if($resultadoUsuarios)
         //echo $this->miFormulario->marcoAgrupacion("inicio", $atributos);
         unset($atributos);
 
-        echo "<div ><table id='tablaProcesos'  width='96%' >";
+        echo "<div ><table id='tablaUsuarios'  width='96%' >";
 
         echo "<thead>
                 <tr align='center'>
@@ -57,44 +57,66 @@ if($resultadoUsuarios)
                     <th>Correo</th>
                     <th>Teléfono</th>
                     <th>Tipo Usuario</th>
+                    <th>Estado</th>
                     <th>Editar</th>
-                    <th>Inhabilitar</th>
+                    <th>Cambio estado</th>
+                    <th>Borrar</th>
                 </tr>
             </thead>
             <tbody>";
 
         for($i=0;$i<count($resultadoUsuarios);$i++)
         {
-            $variableEditar = "pagina=gestionUsuarios"; //pendiente la pagina para modificar parametro
+            $variable = "pagina=gestionUsuarios"; //pendiente la pagina para modificar parametro
+            $variable.= "&usuario=" . $miSesion->getSesionUsuarioId();
+            $variable.= "&id_usuario=" .$resultadoUsuarios[$i][0];
+            
+            $variableEditar = $variable; 
             $variableEditar.= "&opcion=editar";
-            $variableEditar.= "&usuario=" . $miSesion->getSesionUsuarioId();
-            $variableEditar.= "&id_usuario=" .$resultadoUsuarios[$i][0];
             $variableEditar = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variableEditar, $directorio);
 
-            $variableInhabilitar = "pagina=gestionUsuarios"; //pendiente la pagina para modificar parametro
+            $variableInhabilitar = $variable;
             $variableInhabilitar.= "&opcion=inhabilitar";
-            $variableInhabilitar.= "&usuario=" . $miSesion->getSesionUsuarioId();
-            $variableInhabilitar.= "&id_usuario=" .$resultadoUsuarios[$i][0];
+            if($resultadoUsuarios[$i][7]==0)
+                { $variableInhabilitar.= "&estado=1";
+                  $imagen = "player_pause.png";
+                }
+            else{ $variableInhabilitar.= "&estado=0";
+                  $imagen = "continuar.png";  
+                }
             $variableInhabilitar = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variableInhabilitar, $directorio);
 
+            $variableborrar = $variable;
+            $variableborrar.= "&opcion=borrar";
+            $variableborrar= $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variableInhabilitar, $directorio);
+            
+            if($resultadoUsuarios[$i][7]==0)
+                {$estado='Inactivo';}
+            elseif($resultadoUsuarios[$i][7]==1)
+                {$estado='Activo';}
+            elseif($resultadoUsuarios[$i][7]==2)
+                {$estado='Nuevo';}    
+            
             $mostrarHtml = "<tr align='center'>
-                    <td width='8%' >".$resultadoUsuarios[$i][0]."</td>
+                    <td width='10%' >".$resultadoUsuarios[$i][0]."</td>
                     <td width='15%' >".$resultadoUsuarios[$i][1]."</td>
                     <td width='15%'>".$resultadoUsuarios[$i][2]."</td>
                     <td>".$resultadoUsuarios[$i][3]."</td>
                     <td>".$resultadoUsuarios[$i][4]."</td>
-                    <td>".$resultadoUsuarios[$i][6]."</td>";
+                    <td>".$resultadoUsuarios[$i][6]."</td>
+                    <td>".$estado."</td>";
                     $mostrarHtml .= "<td width='5%' >";
-
                     $mostrarHtml .= "<a href='".$variableEditar."'>
-                                        <img src='".$rutaBloque."/images/edit.png' width='25px'>
-                                    </a>";
+                                        <img src='".$rutaBloque."/images/edit.png' width='22px'></a>";
                     $mostrarHtml .= "<td width='5%' >";
                     $mostrarHtml .= "<a href='".$variableInhabilitar."'>
-                                        <img src='".$rutaBloque."/images/cancel.png' width='25px'>
-                                    </a>";
+                                        <img src='".$rutaBloque."/images/".$imagen."' width='22px'></a>";
                     $mostrarHtml .= "</td>";
-
+                    $mostrarHtml .= "<td width='5%' >";
+                    
+                    $mostrarHtml .= "<a href='".$variableborrar."'>
+                                        <img src='".$rutaBloque."/images/trash.png' width='22px'></a>";
+                    $mostrarHtml .= "</td>";
 
                 $mostrarHtml .= "</tr>";
                 echo $mostrarHtml;

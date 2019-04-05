@@ -44,11 +44,11 @@ class SqlGestionUsuarios extends sql {
                     
                         case "consultarUsuarios":
                             
-				$cadena_sql = "SELECT id_usuario, nombre, apellido, correo, telefono, tipo, ".$prefijo."tipousuario.descripcion  ";
+				$cadena_sql = "SELECT id_usuario, nombre, apellido, correo, telefono, tipo, ".$prefijo."tipousuario.descripcion, estado  ";
 				$cadena_sql .= "  ";
                                 $cadena_sql .= "FROM ".$prefijo."usuario ";
                                 $cadena_sql .= "JOIN ".$prefijo."tipousuario ON ".$prefijo."tipousuario.idtipo = ".$prefijo."usuario.tipo  ";
-                                $cadena_sql .= " WHERE  estado IN (1,2) ";
+                                //$cadena_sql .= " WHERE  estado IN (1,2) ";
                                 
 			break;
                     
