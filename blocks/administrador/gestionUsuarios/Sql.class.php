@@ -98,10 +98,10 @@ class SqlGestionUsuarios extends sql {
 			break;
                     
                         case "inhabilitarUsuario":
-                            
+                             
 				$cadena_sql = "UPDATE ".$prefijo."usuario SET ";
-                                $cadena_sql .= " estado = 0 ";
-                                $cadena_sql .= " WHERE id_usuario = ".$variable." ";
+                                $cadena_sql .= " estado = ".$variable[1]." ";
+                                $cadena_sql .= " WHERE id_usuario = ".$variable[0]." ";
 			break;
 				/**
 				 * Clausulas genéricas. se espera que estén en todos los formularios

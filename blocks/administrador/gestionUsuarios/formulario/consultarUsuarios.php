@@ -123,9 +123,7 @@ if($resultadoUsuarios)
                 unset($mostrarHtml);
                 unset($variable);
         }
-
         echo "</tbody>";
-
         echo "</table></div>";
 
         //Fin de Conjunto de Controles

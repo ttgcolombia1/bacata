@@ -105,7 +105,7 @@ echo $this->miFormulario->formulario("inicio",$atributos);
 	}else if($_REQUEST['mensaje'] == 'inhabilito')
 	{
             $tipo = 'success';
-            $mensaje = "El usuario se inhabilito con exito.";
+            $mensaje = "Se cambio el estado del usuario con exito.";
             $boton = "continuar";
                         
             $valorCodificado="pagina=gestionUsuarios";
@@ -113,7 +113,7 @@ echo $this->miFormulario->formulario("inicio",$atributos);
 	}else if($_REQUEST['mensaje'] == 'noInhabilito')
 	{
             $tipo = 'error';
-            $mensaje = "El usuario no se pudo inhabilitar. Por favor intente mas tarde.";
+            $mensaje = "No fue posible cambiar el estado del usuario. Por favor intente mas tarde.";
             $boton = "regresar";
                         
             $valorCodificado="pagina=gestionUsuarios";

@@ -4,7 +4,7 @@ $this->idioma["tabUsuario"]="Creación Usuarios";
 $this->idioma["nuevoUsuario"]="Usuario Nuevo ";
 $this->idioma["tabUsuarioEditar"]="Editar Usuario";
 
-$this->idioma["inhabilitar"]="Inhabilitar Usuario";
+$this->idioma["inhabilitar"]="Cambiar estado";
 
 $this->idioma["identificacionTitulo"]="Digite la identificación del usuario";
 

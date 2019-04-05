@@ -44,7 +44,7 @@ echo $this->miFormulario->formulario("inicio",$atributos);
         echo $this->miFormulario->division("inicio",$atributos);
 
         $tipo = 'warning';
-        $mensaje = "Esta seguro de inhabilitar el usuario ".$resultadoUsuarios[0]['nombre']." ".$resultadoUsuarios[0]['apellido']."?. <br> Una vez inhabilitado, no se puede cambiar de nuevo el estado.";
+        $mensaje = "Esta seguro de cambiar el estado del usuario ".$resultadoUsuarios[0]['nombre']." ".$resultadoUsuarios[0]['apellido']."?. <br>";
         $boton = "inhabilitar";
 
         $valorCodificado="action=".$esteBloque["nombre"];
@@ -52,6 +52,7 @@ echo $this->miFormulario->formulario("inicio",$atributos);
         $valorCodificado.="&bloque=".$esteBloque["id_bloque"];
         $valorCodificado.="&bloqueGrupo=".$esteBloque["grupo"];        
         $valorCodificado.="&id_usuario=".$_REQUEST['id_usuario'];  
+        $valorCodificado.="&estado=".$_REQUEST['estado'];
         $valorCodificado=$cripto->codificar($valorCodificado);
 
 	

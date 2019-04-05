@@ -9,12 +9,12 @@ if(!isset($GLOBALS["autorizado"]))
 	$miSesion = Sesion::singleton();
 	
 	$usuarioSoporte = $miSesion->getSesionUsuarioId(); 
-	 
+	
 	$conexion="estructura";
 	$esteRecursoDB=$this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
-	
-	$this->cadena_sql = $this->sql->cadena_sql("inhabilitarUsuario", $_REQUEST['id_usuario']);
-	$resultadoEstado = $esteRecursoDB->ejecutarAcceso($this->cadena_sql, "acceso");
+	$parametro=array('usuario'=>$_REQUEST['id_usuario'],'estado'=>$_REQUEST['estado']);
+        $this->cadena_sql = $this->sql->cadena_sql("inhabilitarUsuario", $parametro);
+        $resultadoEstado = $esteRecursoDB->ejecutarAcceso($this->cadena_sql, "acceso");
 	
         if($resultadoEstado)
 	{	
