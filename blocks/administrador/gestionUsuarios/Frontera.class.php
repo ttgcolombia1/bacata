@@ -72,7 +72,10 @@ class FronteraGestionUsuarios{
                                 case "editar":
 					include_once($this->ruta."formulario/editar.php");
 					break;    
-                                    
+
+                                case "borrar":
+					include_once($this->ruta."formulario/confirmarBorrar.php");
+					break;                                    
                                 case "inhabilitar":
 					include_once($this->ruta."formulario/inhabilitar.php");
 					break;        

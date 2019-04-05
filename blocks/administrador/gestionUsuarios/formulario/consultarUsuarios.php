@@ -88,7 +88,7 @@ if($resultadoUsuarios)
 
             $variableborrar = $variable;
             $variableborrar.= "&opcion=borrar";
-            $variableborrar= $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variableInhabilitar, $directorio);
+            $variableborrar= $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variableborrar, $directorio);
             
             if($resultadoUsuarios[$i][7]==0)
                 {$estado='Inactivo';}

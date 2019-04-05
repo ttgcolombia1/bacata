@@ -40,22 +40,19 @@ class FuncionGestionUsuarios
                 
 		
 			if(isset($_REQUEST["procesarAjax"]))
-			{
-				$this->procesarAjax();
-
-			}else if($_REQUEST["opcion"]=="guardarDatos")
-			{   $_REQUEST=$this->miInspectorHTML->limpiarSQL($_REQUEST,$excluir);
-			    $this->guardarDatos(); 
-			}else if($_REQUEST["opcion"]=="guardarDatosEditar")
-			{   $_REQUEST=$this->miInspectorHTML->limpiarSQL($_REQUEST,$excluir);
-			    $this->guardarDatosEditar(); 
-			}else if($_REQUEST["opcion"]=="inhabilitar")
-			{
-				$this->inhabilitar(); 
-			}else if($_REQUEST["opcion"]=="resumen")
-			{
-				$this->resumen(); 
-			}
+                            {   $this->procesarAjax();}
+                        else if($_REQUEST["opcion"]=="guardarDatos")
+                            {   $_REQUEST=$this->miInspectorHTML->limpiarSQL($_REQUEST,$excluir);
+                                $this->guardarDatos();}
+                        else if($_REQUEST["opcion"]=="guardarDatosEditar")
+                            {   $_REQUEST=$this->miInspectorHTML->limpiarSQL($_REQUEST,$excluir);
+			    $this->guardarDatosEditar();    }
+                        else if($_REQUEST["opcion"]=="inhabilitar")
+                            {   $this->inhabilitar(); }
+                        else if($_REQUEST["opcion"]=="borrar")
+                            {   $this->borrar(); }
+                        else if($_REQUEST["opcion"]=="resumen")
+                            {   $this->resumen(); }
 	}
 
 
@@ -113,6 +110,10 @@ class FuncionGestionUsuarios
 		include_once($this->ruta."/funcion/inhabilitar.php");
 	}	
         
+	function borrar()
+	{
+		include_once($this->ruta."/funcion/borrar.php");
+	}                
 	function resumen()
 	{
 		include_once($this->ruta."/funcion/resumenUsuario.php");

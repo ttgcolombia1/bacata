@@ -77,7 +77,23 @@ if(!isset($GLOBALS["autorizado"]))
 				$variable.="&id_usuario=".$valor;
 			}
 			break;        
-            
+                case "borro":
+			$variable="pagina=".$miPaginaActual;
+			$variable.="&opcion=mensaje";
+			$variable.="&mensaje=borro";
+                        $variable.="&id_usuario=".$valor;
+			
+			break;
+                        
+                case "noBorro":
+			$variable="pagina=".$miPaginaActual;
+			$variable.="&opcion=mensaje";
+			$variable.="&mensaje=noBorro";
+			if($valor!=""){
+				$variable.="&id_usuario=".$valor;
+			}
+			break;  
+                        
 		case "confirmarNuevo":
 			$variable="pagina=".$miPaginaActual;
 			$variable.="&opcion=confirmar";

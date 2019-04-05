@@ -103,6 +103,11 @@ class SqlGestionUsuarios extends sql {
                                 $cadena_sql .= " estado = ".$variable[1]." ";
                                 $cadena_sql .= " WHERE id_usuario = ".$variable[0]." ";
 			break;
+                        case "borrarUsuario":
+                             
+				$cadena_sql = "DELETE FROM ".$prefijo."usuario ";
+                                $cadena_sql .= " WHERE id_usuario = ".$variable[0]." ";
+			break;
 				/**
 				 * Clausulas genéricas. se espera que estén en todos los formularios
 				 * que utilicen esta plantilla

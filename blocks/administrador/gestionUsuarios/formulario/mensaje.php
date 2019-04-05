@@ -80,7 +80,7 @@ echo $this->miFormulario->formulario("inicio",$atributos);
 	}else if($_REQUEST['mensaje'] == 'error')
 	{
             $tipo = 'error';
-            $mensaje = "El usuario ".$_REQUEST['nombres']." ".$_REQUEST['apellidos']." no ha sido creado. Por favor intente mas tarde.";
+            $mensaje = "El usuario ".$_REQUEST['nombres']." ".$_REQUEST['apellidos']." no ha sido creado. Por favor intente más tarde.";
             $boton = "regresar";
                         
             $valorCodificado="pagina=gestionUsuarios";
@@ -97,7 +97,7 @@ echo $this->miFormulario->formulario("inicio",$atributos);
 	}else if($_REQUEST['mensaje'] == 'errorActualizo')
 	{
             $tipo = 'error';
-            $mensaje = "El usuario ".$_REQUEST['nombres']." ".$_REQUEST['apellidos']." no se ha actualizado. Por favor intente mas tarde.";
+            $mensaje = "El usuario ".$_REQUEST['nombres']." ".$_REQUEST['apellidos']." no se ha actualizado. Por favor intente más tarde.";
             $boton = "regresar";
                         
             $valorCodificado="pagina=gestionUsuarios";
@@ -113,7 +113,23 @@ echo $this->miFormulario->formulario("inicio",$atributos);
 	}else if($_REQUEST['mensaje'] == 'noInhabilito')
 	{
             $tipo = 'error';
-            $mensaje = "No fue posible cambiar el estado del usuario. Por favor intente mas tarde.";
+            $mensaje = "No fue posible cambiar el estado del usuario. Por favor intente más tarde.";
+            $boton = "regresar";
+                        
+            $valorCodificado="pagina=gestionUsuarios";
+            $valorCodificado=$cripto->codificar_url($valorCodificado,$directoriourl);
+	}else if($_REQUEST['mensaje'] == 'borro')
+	{
+            $tipo = 'success';
+            $mensaje = "Se borro el registro del usuario con exito.";
+            $boton = "continuar";
+                        
+            $valorCodificado="pagina=gestionUsuarios";
+            $valorCodificado=$cripto->codificar_url($valorCodificado,$directoriourl);
+	}else if($_REQUEST['mensaje'] == 'noBorro')
+	{
+            $tipo = 'error';
+            $mensaje = "No fue posible borrar el registro del usuario. Por favor intente más tarde.";
             $boton = "regresar";
                         
             $valorCodificado="pagina=gestionUsuarios";
