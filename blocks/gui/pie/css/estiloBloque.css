@@ -1,0 +1,27 @@
+ #pie{
+
+ font-family:Arial;
+ font-size:12px;
+ margin:0 auto;
+ text-align:center;
+
+ }
+
+
+ #escudo{
+    clear:both;
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: auto;
+    background: url(../imagen/logottg2.png) no-repeat;
+}
+
+ #sabio{
+    clear:both;
+    width: 700px;
+    height: 113px;
+    display: block;
+    margin: auto;
+    background: url(../imagen/logo.png) no-repeat;
+}

@@ -1,0 +1,31 @@
+.boton-nuevo {
+text-decoration:none;
+font-weight: 600;
+font-size: 12px;
+font-family:"Arial",Helvetica, sans-serif;
+color:#c27126;
+padding:5px 5px 5px 35px;
+background-color:#FFFFFF;
+border-color: #d8d8d8;
+border-width: 2px;
+border-style: solid;
+border-radius:20px;
+
+margin: 10px auto;
+width:10%;
+
+display:block;
+float: center;
+background-image: url("../img/knobs/add.png");
+background-repeat: no-repeat;
+background-position: 2px 6px;
+
+}
+
+/* Este es el estilo al poner el cursor encima del boton*/
+.boton-nuevo:hover {
+background-color:#7eb257;
+}
+.boton-nuevo > a{
+	color:#504d4b;
+}
