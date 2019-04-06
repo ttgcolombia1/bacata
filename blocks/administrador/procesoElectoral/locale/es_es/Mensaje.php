@@ -2,6 +2,7 @@
 
 $this->idioma["tabProceso"]="Creación Proceso Electoral";
 
+$this->idioma["nuevoProceso"]="Proceso Nuevo ";
 $this->idioma["tabProcesoEditar"]="Editar Proceso Electoral";
 
 $this->idioma["inhabilitar"]="Inhabilitar Proceso";

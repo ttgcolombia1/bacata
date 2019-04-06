@@ -70,8 +70,8 @@ echo $this->miFormulario->formulario("inicio",$atributos);
             $atributos["estilo"]="marcoBotones";
             echo $this->miFormulario->division("inicio",$atributos);
             
-            $enlace = "<a href='".$variableResumen."'>";
-            $enlace.="<img src='".$rutaBloque."/images/acroread.png' width='25px'><br>Descargar Resumen ";
+            $enlace = "<a class='enlace' href='".$variableResumen."'>";
+            $enlace.="<img src='".$rutaBloque."/images/pdfImage.png' width='25px'><br>Descargar Resumen";
             $enlace.="</a><br><br>";       
             echo $enlace;
             //------------------Fin Division para los botones-------------------------

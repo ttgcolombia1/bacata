@@ -9,6 +9,9 @@ $estilo[$indice++]="chosen.css";
 $estilo[$indice++]="select2.css";
 $estilo[$indice++]="override.css";
 $estilo[$indice++]="tarjeton.css";
+$estilo[$indice++]="jquery.dataTables.css";
+$estilo[$indice++]="jquery.dataTables_themeroller.css";
+
 
 
 $rutaBloque=$this->miConfigurador->getVariableConfiguracion("host");

@@ -34,9 +34,10 @@ $variableNuevo .= "&opcion=nuevo";
 $variableNuevo .= "&usuario=" . $miSesion->getSesionUsuarioId();
 $variableNuevo = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variableNuevo, $directorio);
 
-
 echo "<h1> Gestión de Procesos Electorales </h1>";
-
+echo "<div class='boton-nuevo'>
+            <a href='".$variableNuevo."'>".$this->lenguaje->getCadena('nuevoProceso')."</a>
+      </div>";
 if ($resultadoProcesos) {
     //-----------------Inicio de Conjunto de Controles----------------------------------------
     $esteCampo = "marcoDatosResultadoParametrizar";
@@ -45,8 +46,7 @@ if ($resultadoProcesos) {
     //echo $this->miFormulario->marcoAgrupacion("inicio", $atributos);
     unset($atributos);
 
-    echo "<div class='datagrid'><table id='tablaProcesos'>";
-
+    echo "<div ><table id='tablaProcesos'   width='96%' >";
     echo "<thead>
                 <tr align='center'>
                     <th>Nombre</th>
@@ -74,7 +74,6 @@ if ($resultadoProcesos) {
         $variableVerTarjeton .= "&usuario=" . $miSesion->getSesionUsuarioId();
         $variableVerTarjeton .= "&proceso=" . $resultadoProcesos[$i][7];
         $variableVerTarjeton = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($variableVerTarjeton, $directorio);
-
 
         $variableInhabilitar = "pagina=procesoElectoral"; //pendiente la pagina para modificar parametro
         $variableInhabilitar .= "&opcion=inhabilitar";
@@ -106,7 +105,7 @@ if ($resultadoProcesos) {
           * */
 
         $mostrarHtml = "<tr align='center'>
-                    <td>" . $resultadoProcesos[$i][0] . "</td>
+                    <td width='15%' >" . $resultadoProcesos[$i][0] . "</td>
                     <td>" . $resultadoProcesos[$i][2] . "</td>
                     <td>" . $resultadoProcesos[$i][3] . "</td>
                     <td>" . $resultadoProcesos[$i][5] . "</td><td>";
@@ -117,7 +116,7 @@ if ($resultadoProcesos) {
             $mostrarHtml .= "El proceso ha iniciado, no se puede parametrizar";
         } else {
             $mostrarHtml .= "<a href='" . $variableParametrizar . "'>
-                                            <img src='" . $rutaBloque . "/images/edit.png' width='25px'>
+                                            <img src='" . $rutaBloque . "/images/grupoNuevo.png' width='27px'>
                                         </a>";
         }
         $mostrarHtml .= "</td>";
@@ -127,7 +126,7 @@ if ($resultadoProcesos) {
             $mostrarHtml .= "El proceso no se puede editar, ya inicio el proceso";
             $mostrarHtml .= "</td>";
             $mostrarHtml .= "<td>";
-            $mostrarHtml .= "<a href='".$variableVerTarjeton."'><img src='".$rutaBloque."/images/info.png' width='25px'></a></td>";
+            $mostrarHtml .= "<a href='".$variableVerTarjeton."'><img src='".$rutaBloque."/images/xmag.png' width='25px'></a></td>";
             $mostrarHtml .= "</td>";
             $mostrarHtml .= "<td>";
             $mostrarHtml .= "El proceso no se puede inhabilitar, ya inicio el proceso";
@@ -137,21 +136,18 @@ if ($resultadoProcesos) {
             $mostrarHtml .= "<a href='".$variableEditar."'><img src='".$rutaBloque."/images/edit.png' width='25px'></a>";
             $mostrarHtml .= "</td>";
             $mostrarHtml .= "<td>";
-            $mostrarHtml .= "<a href='" . $variableVerTarjeton . "'><img src='" . $rutaBloque . "/images/info.png' width='25px'></a>";
+            $mostrarHtml .= "<a href='" . $variableVerTarjeton . "'><img src='" . $rutaBloque . "/images/xmag.png' width='25px'></a>";
             $mostrarHtml .= "</td>";
             $mostrarHtml .= "<td>";
             $mostrarHtml .= "<a href='" . $variableInhabilitar . "'><img src='" . $rutaBloque . "/images/cancel.png' width='25px'></a>";
             $mostrarHtml .= "</td>";
         }
 
-
-
         $mostrarHtml .= "<td>";
         $mostrarHtml .= "<a href='" . $variableResumen . "'>
-                                       <img src='" . $rutaBloque . "/images/acroread.png' width='25px'>
+                                       <img src='" . $rutaBloque . "/images/pdfImage.png' width='25px'>
                                    </a>";
         $mostrarHtml .= "</td>";
-
         $mostrarHtml .= "</tr>";
         echo $mostrarHtml;
         unset($mostrarHtml);
@@ -159,7 +155,6 @@ if ($resultadoProcesos) {
     }
 
     echo "</tbody>";
-
     echo "</table></div>";
 
     //Fin de Conjunto de Controles
@@ -172,7 +167,6 @@ if ($resultadoProcesos) {
     $directorio = $this->miConfigurador->getVariableConfiguracion("rutaUrlBloque") . "/imagen/";
 
     $miPaginaActual = $this->miConfigurador->getVariableConfiguracion("pagina");
-
     $tab = 1;
     //---------------Inicio Formulario (<form>)--------------------------------
     $atributos["id"] = $nombreFormulario;
@@ -192,7 +186,7 @@ if ($resultadoProcesos) {
     $atributos["id"] = $esteCampo; //Cambiar este nombre y el estilo si no se desea mostrar los mensajes animados
     $atributos["etiqueta"] = "";
     $atributos["estilo"] = "centrar";
-    $atributos["tipo"] = 'error';
+    $atributos["tipo"] = 'information';
     $atributos["mensaje"] = $this->lenguaje->getCadena($esteCampo);;
     echo $this->miFormulario->cuadroMensaje($atributos);
     unset($atributos);
@@ -202,14 +196,12 @@ if ($resultadoProcesos) {
     $valorCodificado .= "&bloqueGrupo=" . $esteBloque["grupo"];
     $valorCodificado = $cripto->codificar($valorCodificado);
     //-------------Fin Control Boton----------------------
-
     //------------------Fin Division para los botones-------------------------
     echo $this->miFormulario->division("fin");
     //------------------Division para los botones-------------------------
     $atributos["id"] = "botones";
     $atributos["estilo"] = "marcoBotones";
     echo $this->miFormulario->division("inicio", $atributos);
-
     //-------------Control Boton-----------------------
     $esteCampo = "regresar";
     $atributos["id"] = $esteCampo;
@@ -220,14 +212,11 @@ if ($resultadoProcesos) {
     $atributos["tipoSubmit"] = "jquery"; //Dejar vacio para un submit normal, en este caso se ejecuta la función submit declarada en ready.js
     $atributos["valor"] = $this->lenguaje->getCadena($esteCampo);
     $atributos["nombreFormulario"] = $nombreFormulario;
-    echo $this->miFormulario->campoBoton($atributos);
+    //echo $this->miFormulario->campoBoton($atributos);
     unset($atributos);
     //-------------Fin Control Boton----------------------
-
-
     //------------------Fin Division para los botones-------------------------
     echo $this->miFormulario->division("fin");
-
     //-------------Control cuadroTexto con campos ocultos-----------------------
     //Para pasar variables entre formularios o enviar datos para validar sesiones
     $atributos["id"] = "formSaraData"; //No cambiar este nombre
@@ -241,15 +230,4 @@ if ($resultadoProcesos) {
     //Fin del Formulario
     echo $this->miFormulario->formulario("fin");
 }
-echo "<div class='datagrid'>
-    <table align='center' id='proceso'>
-        <tr align='center'>
-            <td align='center'>
-                <a href='" . $variableNuevo . "'>
-                    <img src='" . $rutaBloque . "/images/new.png' width='45px'> <br> <b>Crear Nuevo <br>Proceso Electoral</b>
-                </a>
-            </td>
-        </tr>
-      </table></div> ";
-
-
+?>
