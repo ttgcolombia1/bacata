@@ -12,21 +12,12 @@ $directorio=$this->miConfigurador->getVariableConfiguracion("rutaBloque");
 
 $contenidoPagina = "<page backtop='30mm' backbottom='10mm' backleft='20mm' backright='20mm'>";
 $contenidoPagina .= "<page_header>
-        <table align='center' style='width: 100%;'>
+        <table align='center' style='width: 100%;' borde='1'>
             <tr>
-                <td align='center' >
-                    <img src='".$directorio."css/images/escudo.jpg'>
+                <td align='center' colspan='3' >
+                   <img src='".$directorio."css/images/logoBacata.png' width='200'>
                 </td>
-                <td align='center' >
-                    <font size='18px'><b>UNIVERSIDAD DISTRITAL</b></font>
-                    <br>
-                    <font size='18px'><b>FRANCISCO JOS&Eacute; DE CALDAS</b></font>
-                    <br>
-                    <font size='9px'><b>1948 - 2013 SESENTA Y CINCO A&Ntilde;OS DE VIDA UNIVERSITARIA</b></font>
-                </td>
-                <td align='center' >
-                    <img src='".$directorio."css/images/sabio.jpg' width='60'>
-                </td>
+                
             </tr>
         </table>
     </page_header>
@@ -34,18 +25,14 @@ $contenidoPagina .= "<page_header>
         <table align='center' width = '100%'>
             <tr>
                 <td align='center'>
-                    <img src='".$directorio."css/images/escudo.jpg'>
+                    <img src='".$directorio."css/images/logottg.png' width='50'>
                 </td>
             </tr>
             <tr>
                 <td align='center'>
-                    Universidad Distrital Francisco Jos&eacute; de Caldas
+                    Soluciones tecnológica con responsabilidad solcial
                     <br>
-                    Todos los derechos reservados.
-                    <br>
-                    Carrera 8 N. 40-78 Piso 1 / PBX 3238400 - 3239300
-                    <br>
-                    elecciones@udistrital.edu.co                    
+                    ttg@ttg.com.co                    
                 </td>
             </tr>
         </table>
