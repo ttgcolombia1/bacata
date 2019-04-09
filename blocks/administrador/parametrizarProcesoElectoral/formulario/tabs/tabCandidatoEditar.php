@@ -14,13 +14,13 @@ $directorio = $this->miConfigurador->getVariableConfiguracion("host");
 $directorio .= $this->miConfigurador->getVariableConfiguracion("site") . "/index.php?";
 $directorio .= $this->miConfigurador->getVariableConfiguracion("enlace");
 
-$rutaCandidatos = $this->miConfigurador->getVariableConfiguracion("host");
-$rutaCandidatos .= $this->miConfigurador->getVariableConfiguracion("urlCandidatos");
+$urlCandidatos = $this->miConfigurador->getVariableConfiguracion("host");
+$urlCandidatos .= $this->miConfigurador->getVariableConfiguracion("urlCandidatos");
+$rutaCandidatos = $this->miConfigurador->getVariableConfiguracion("rutaCandidatos");
+
 
 $miSesion = Sesion::singleton();
-
 $sesion = $miSesion->getSesionUsuarioId();
-
 $nombreFormulario = $esteBloque["nombre"];
 
 include_once("core/crypto/Encriptador.class.php");
@@ -45,13 +45,16 @@ echo $this->miFormulario->formulario("inicio", $atributos);
 $conexion = "voto";
 $esteRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
-?>
-<?php
+$rutaImagen= "file://".$rutaCandidatos.$resultadoCandidato[0]['foto'];
+$imagen = file_get_contents ( $rutaImagen );
+$imagenEncriptada = base64_encode ( $imagen );
+$url_foto_perfil= "data:image;base64," . $imagenEncriptada;
+
 $atributos["id"] = "divDatos";
 $atributos["estilo"] = "marcoBotones";
 //$atributos["estiloEnLinea"]="display:none";
 //echo $this->miFormulario->division("inicio",$atributos);
-echo "<img src='" . $rutaCandidatos . $resultadoCandidato[0]['foto'] . "' width='150px'>";
+echo "<img src='" . $url_foto_perfil . "' width='113px' height='150px' >";
 //-------------Control cuadroTexto-----------------------
 $esteCampo = "nombre";
 $atributos["id"] = $esteCampo;

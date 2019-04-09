@@ -5,7 +5,8 @@ if (!isset($GLOBALS["autorizado"])) {
 }
 
 include_once("partials/logicaTarjeton.php");
-
+ $rutaCandidatos = $this->miConfigurador->getVariableConfiguracion("rutaCandidatos");
+       
 // Consulta de todas las elecciones segun el proceso
 $resultadoElecciones = $esteRecursoDB->ejecutarAcceso($this->sql->cadena_sql("consultaEleccion", array($proceso)), "busqueda");
 
@@ -16,7 +17,6 @@ if ($resultadoElecciones) {
 
         // Por cada una de las elecciones del proceso, consultar la lista de tarjetones de la tabla evoto_lista
         // Seleccionar las listas que estan inscritas para esta eleccion
-
         $cadena_sql = $this->sql->cadena_sql("listaTarjetones", $resultadoElecciones[$i]["ideleccion"]);
         $resultadoTarjeton = $esteRecursoDB->ejecutarAcceso($cadena_sql, "busqueda");
         // Traer la informacion de la eleccion.
@@ -36,9 +36,6 @@ if ($resultadoElecciones) {
 
         if ($resultadoTarjeton) {
 
-
-
-
             $atributos["id"] = "botones";
             $atributos["estilo"] = "marcoBotones";
             echo $this->miFormulario->division("inicio", $atributos);
@@ -48,7 +45,6 @@ if ($resultadoElecciones) {
             $atributos["id"] = "Tarjeton";
             $atributos["estilo"] = "marcoBotones";
             echo $this->miFormulario->division("inicio", $atributos);
-
             echo "<table width='100%'>";
             echo "<caption>
                 <font size=3'>
@@ -61,27 +57,16 @@ if ($resultadoElecciones) {
 
             // Traer el numero de la listas por cada fila
             if (isset($resultadoInfoEleccion[0]['listatarjeton'])) {
-
                 $listasPorFila = $resultadoInfoEleccion[0]['listatarjeton'];
 
             } else {
-
                 $listasPorFila = 3;
             }
-
             // Verificar
-
-
             $porcentajeLista = 100 / $listasPorFila;
-
-
             $idLista = 0;
             $eleActual = '';
-
-
             for ($j = 0; $j < count($resultadoTarjeton); $j++) {
-
-
                 if (($j % $listasPorFila) == 0) {
                     if ($j > 0) {
                         echo "</tr>";
@@ -112,11 +97,15 @@ if ($resultadoElecciones) {
                                 $posicCandidato = "Candidato " . ($n + 1);
                                 break;
                         }
+                        $rutaImagen= "file://".$rutaCandidatos.$resultadoCandidatos[$n][5];
+                        $imagen = file_get_contents ( $rutaImagen );
+                        $imagenEncriptada = base64_encode ( $imagen );
+                        $url_foto_perfil= "data:image;base64," . $imagenEncriptada;
                         echo "<td aling='center'>
                                             <center>
                                             <b>" . $posicCandidato . "</b>
                                             <br>
-                                            <img src='" . $directorio . $resultadoCandidatos[$n][5] . "' title='" . $resultadoCandidatos[$n][3] . " " . $resultadoCandidatos[$n][4] . "' width='113px' height='150px'>
+                                            <img src='" . $url_foto_perfil . "' title='" . $resultadoCandidatos[$n][3] . " " . $resultadoCandidatos[$n][4] . "' width='113px' height='150px'>
                                             <br>
                                             " . $resultadoCandidatos[$n][3] . " " . $resultadoCandidatos[$n][4] . "
                                            </center>     

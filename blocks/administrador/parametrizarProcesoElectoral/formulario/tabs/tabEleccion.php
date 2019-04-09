@@ -10,8 +10,9 @@ $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
 $rutaBloque .= $this->miConfigurador->getVariableConfiguracion("site") . "/blocks/";
 $rutaBloque .= $esteBloque['grupo'] . "/" . $esteBloque['nombre'];
 
-$rutaCandidatos = $this->miConfigurador->getVariableConfiguracion("host");
-$rutaCandidatos .= $this->miConfigurador->getVariableConfiguracion("urlCandidatos");
+$urlCandidatos = $this->miConfigurador->getVariableConfiguracion("host");
+$urlCandidatos .= $this->miConfigurador->getVariableConfiguracion("urlCandidatos");
+$rutaCandidatos = $this->miConfigurador->getVariableConfiguracion("rutaCandidatos");
 
 $directorio = $this->miConfigurador->getVariableConfiguracion("rutaUrlBloque");
 
@@ -519,6 +520,11 @@ if ($resultadoEleccion) {
                     if ($resultadoListaCandidatos) {
 
                         for ($can = 0; $can < count($resultadoListaCandidatos); $can++) {
+                            
+                            $rutaImagen= "file://".$rutaCandidatos.$resultadoListaCandidatos[$can][5];
+                            $imagen = file_get_contents ( $rutaImagen );
+                            $imagenEncriptada = base64_encode ( $imagen );
+                            $url_foto_perfil= "data:image;base64," . $imagenEncriptada;
 
                             ?>
 
@@ -542,7 +548,7 @@ if ($resultadoEleccion) {
                                     <?php echo $resultadoListaCandidatos[$can][4] ?>
                                 </td>
                                 <td>
-                                    <img src='<?php echo $rutaCandidatos . $resultadoListaCandidatos[$can][5] ?>' width="100px">
+                                    <img src='<?php echo $url_foto_perfil ?>' width='113px' height='150px'>
                                 </td>
                                 <td>
                                     <img class="eliminar" src='<?php echo $rutaBloque . "/images/cancel.png" ?>'>

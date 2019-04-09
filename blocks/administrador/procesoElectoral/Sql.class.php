@@ -85,7 +85,7 @@ class SqlProcesoElectoral extends sql
                 $cadena_sql.= "  can.foto,";
                 $cadena_sql.= "  can.reglon";
                 $cadena_sql.= " FROM ".$prefijo."lista lis ";
-                $cadena_sql.= " JOIN evoto_candidato can ON can.lista_idlista = lis.idlista";
+                $cadena_sql.= " JOIN ".$prefijo."candidato can ON can.lista_idlista = lis.idlista";
                 $cadena_sql.= " WHERE eleccion_ideleccion = ".$variable[0]."";
                 $cadena_sql.= " AND lis.idlista = ".$variable[1]."";
                 $cadena_sql.= " ORDER BY  can.reglon ";

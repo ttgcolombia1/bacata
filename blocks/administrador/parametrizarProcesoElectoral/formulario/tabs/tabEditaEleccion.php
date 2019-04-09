@@ -10,8 +10,10 @@ $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
 $rutaBloque .= $this->miConfigurador->getVariableConfiguracion("site") . "/blocks/";
 $rutaBloque .= $esteBloque['grupo'] . "/" . $esteBloque['nombre'];
 
-$rutaCandidatos = $this->miConfigurador->getVariableConfiguracion("host");
-$rutaCandidatos .= $this->miConfigurador->getVariableConfiguracion("urlCandidatos");
+
+$urlCandidatos = $this->miConfigurador->getVariableConfiguracion("host");
+$urlCandidatos .= $this->miConfigurador->getVariableConfiguracion("urlCandidatos");
+$rutaCandidatos = $this->miConfigurador->getVariableConfiguracion("rutaCandidatos");
 
 $directorio = $this->miConfigurador->getVariableConfiguracion("rutaUrlBloque");
 
@@ -153,6 +155,10 @@ if ($resultadoEleccion) {
         if ($resultadoEleccion) {
             if ($resultadoCandidatos) {
                 for ($can = 0; $can < count($resultadoCandidatos); $can++) {
+                    $rutaImagen= "file://".$rutaCandidatos. $resultadoCandidatos[$can][5];
+                    $imagen = file_get_contents ( $rutaImagen );
+                    $imagenEncriptada = base64_encode ( $imagen );
+                    $url_foto_perfil= "data:image;base64," . $imagenEncriptada;
                     ?>
 
                     <tr>
@@ -175,7 +181,7 @@ if ($resultadoEleccion) {
                             <?php echo $resultadoCandidatos[$can][4] ?>
                         </td>
                         <td>
-                            <img src='<?php echo $rutaCandidatos . $resultadoCandidatos[$can][5] ?>' width="150px" height="150px">
+                            <img src='<?php echo $url_foto_perfil; ?>' width='113px' height='150px'>
                         </td>
                         <td>
                             <?php
@@ -206,20 +212,14 @@ if ($resultadoEleccion) {
 <?php
 //Fin de Conjunto de Controles
 echo $this->miFormulario->marcoAGrupacion("fin");
-
 //------------------Fin Division para los botones-------------------------
 echo $this->miFormulario->division("fin");
-
-
 //------------------Division para los botones-------------------------
 $atributos["id"] = "botones";
 $atributos["estilo"] = "marcoBotones";
 echo $this->miFormulario->division("inicio", $atributos);
-
-
 //------------------Fin Division para los botones-------------------------
 echo $this->miFormulario->division("fin");
-
 $valorCodificado = "action=" . $esteBloque["nombre"];
 $valorCodificado .= "&opcion=editarEleccion";
 $valorCodificado .= "&bloque=" . $esteBloque["id_bloque"];
@@ -227,9 +227,7 @@ $valorCodificado .= "&bloqueGrupo=" . $esteBloque["grupo"];
 if ($resultadoEleccion) {
     $valorCodificado .= "&eleccionParametrizada=" . $resultadoEleccion[0]['ideleccion'];
 }
-
 $valorCodificado = $cripto->codificar($valorCodificado);
-
 //-------------Control cuadroTexto con campos ocultos-----------------------
 //Para pasar variables entre formularios o enviar datos para validar sesiones
 $atributos["id"] = "formSaraData"; //No cambiar este nombre
@@ -239,7 +237,6 @@ $atributos["etiqueta"] = "";
 $atributos["valor"] = $valorCodificado;
 echo $this->miFormulario->campoCuadroTexto($atributos);
 unset($atributos);
-
 //-------------Control cuadroTexto con campos ocultos-----------------------
 //Para pasar variables entre formularios o enviar datos para validar sesiones
 $atributos["id"] = "idEleccion"; //No cambiar este nombre
@@ -249,9 +246,6 @@ $atributos["etiqueta"] = "";
 $atributos["valor"] = $idEleccion;
 echo $this->miFormulario->campoCuadroTexto($atributos);
 unset($atributos);
-
 //Fin del Formulario
 echo $this->miFormulario->formulario("fin");
-
-
 ?>
