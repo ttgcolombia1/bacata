@@ -4,7 +4,6 @@ if (!isset($GLOBALS["autorizado"])) {
     include("../index.php");
     exit;
 }
-
 $esteBloque = $this->miConfigurador->getVariableConfiguracion("esteBloque");
 
 $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
@@ -24,12 +23,13 @@ $conexion="estructura";
 $esteRecursoDB=$this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
 
 $fechaActual = date('Y-m-d H:i:s');
-
 $cadena_sql = $this->sql->cadena_sql("idioma", $fechaActual);
 $resultadoIdioma = $esteRecursoDB->ejecutarAcceso($cadena_sql, "acceso");
 
 $cadena_sql = $this->sql->cadena_sql("consultarProcesosActivos", $fechaActual);
 $resultadoProcesos = $esteRecursoDB->ejecutarAcceso($cadena_sql, "busqueda");
+echo "<h1> Gestión de Censo </h1>";
+echo "<div id='plantilla'><a class='enlace' href='".$rutaBloque."/archivos/plantilla_censo.xls'><img src='".$rutaBloque."/images/excel.png'><br>Descargar Plantilla</a></div>";
 
 if($resultadoProcesos)
 {
@@ -117,7 +117,5 @@ if($resultadoProcesos)
 	//------------------Fin Division para los botones-------------------------
 	echo $this->miFormulario->division("fin");
 }
-echo "<div id='plantilla'><a href='".$rutaBloque."/archivos/plantilla_censo.xls'><img src='".$rutaBloque."/images/excel.png'><br>Descargar Plantilla</a></div>";
-
 
 ?>

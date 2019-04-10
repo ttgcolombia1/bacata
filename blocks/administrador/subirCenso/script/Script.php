@@ -12,6 +12,8 @@ $funcion[$indice++]="jquery.validationEngine-es.js";
 $funcion[$indice++]="jquery-te.js";
 $funcion[$indice++]="progressbar.js";
 $funcion[$indice++]="censo.js";
+$funcion[$indice ++] = "jquery.dataTables.js";
+$funcion[$indice ++] = "jquery.dataTables.min.js";
 
 
 
