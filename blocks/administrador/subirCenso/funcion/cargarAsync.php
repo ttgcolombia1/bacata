@@ -4,7 +4,6 @@ if (!isset($GLOBALS["autorizado"])) {
     include("index.php");
     exit;
 } else {
-
     $conexion="estructura";
     $enlace = $this->miConfigurador->getVariableConfiguracion("enlace");
     $esteRecursoDB=$this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
@@ -38,6 +37,7 @@ if (!isset($GLOBALS["autorizado"])) {
     }
 
     fclose($handle);
+
     $pattern = '1234567890aeiouAEIOU#=';
     if (($handle = fopen($destino, "r")) !== FALSE) {
 
@@ -57,8 +57,8 @@ if (!isset($GLOBALS["autorizado"])) {
                   $segundaIdentificacion = $fila[3];
               }
             }
-
-            $registro = array($identificacion, $clave, $idEleccion, strtoupper($nombre), $estamento,$segundaIdentificacion);
+            $correo = $fila[4];
+            $registro = array($identificacion, $clave, $idEleccion, strtoupper($nombre), $estamento,$segundaIdentificacion,$correo);
             $this->cadena_sql = $this->sql->cadena_sql("validarDatoCenso", $registro);
             $resultadoCensoValida = $esteRecursoDB->ejecutarAcceso($this->cadena_sql, "busqueda");
 

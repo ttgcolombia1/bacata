@@ -114,13 +114,14 @@ class SqlSubirCenso extends sql
 
             case "insertarDatoCenso":
 
-                $cadena_sql = "INSERT INTO " . $prefijo . "censo(identificacion, clave, ideleccion, nombre, idtipo, segunda_identificacion) VALUES (  ";
+                $cadena_sql = "INSERT INTO " . $prefijo . "censo(identificacion, clave, ideleccion, nombre, idtipo, segunda_identificacion,correo) VALUES (  ";
                 $cadena_sql .= " " . $variable[0] . ", ";
                 $cadena_sql .= " '" . $variable[1] . "', ";
                 $cadena_sql .= " " . $variable[2] . ", ";
                 $cadena_sql .= " '" . $variable[3] . "', ";
                 $cadena_sql .= " " . $variable[4] . ", ";
-                $cadena_sql .= " " . $variable[5] . ") ";
+                $cadena_sql .= " " . $variable[5] . ", ";
+                $cadena_sql .= " '" . $variable[6] . "') ";
 
                 break;
 

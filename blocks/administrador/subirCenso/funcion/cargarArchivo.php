@@ -51,13 +51,14 @@ if(!isset($GLOBALS["autorizado"]))
               $clave[$i] = hash("sha1",hash("md5",$data->sheets[0]['cells'][$i][1].'='));
               $nombre[$i] = $data->sheets[0]['cells'][$i][2];
               $estamento[$i] = $data->sheets[0]['cells'][$i][3];
+              $correo[$i] = $data->sheets[0]['cells'][$i][5];
               
               if($data->sheets[0]['cells'][$i][4]!=''){
               $segundaIdentificacion[$i] = $data->sheets[0]['cells'][$i][4];
               }else{
                   $segundaIdentificacion[$i] =0;
               }
-              $arreglo[$i] = array($identificacion[$i], $clave[$i], $idEleccion, strtoupper($nombre[$i]), $estamento[$i],$segundaIdentificacion[$i]);
+              $arreglo[$i] = array($identificacion[$i], $clave[$i], $idEleccion, strtoupper($nombre[$i]), $estamento[$i],$segundaIdentificacion[$i],$correo[$i]);
 
               $this->cadena_sql = $this->sql->cadena_sql("validarDatoCenso", $arreglo[$i]);
               $resultadoCensoValida = $esteRecursoDB->ejecutarAcceso($this->cadena_sql, "busqueda");
