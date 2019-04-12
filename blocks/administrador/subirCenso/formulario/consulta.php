@@ -45,12 +45,11 @@ if (isset($_REQUEST['proceso'])) {
         $nombreEleccion = $resultadoProcesos["nombre"];
     }
 
-
+echo "<h1> Consuta de Censo </h1>";
     $atributos["id"]="tabs";
     $atributos["estilo"]="";
-    echo $this->miFormulario->division("inicio",$atributos);
+   // echo $this->miFormulario->division("inicio",$atributos);
     unset($atributos);
-
 
     $items=array("tabProceso"=>$this->lenguaje->getCadena("tabConsultaVotante"). " para proceso electoral: $nombreEleccion");
 
@@ -58,13 +57,7 @@ if (isset($_REQUEST['proceso'])) {
     $atributos["items"]=$items;
     $atributos["estilo"]="jqueryui";
     $atributos["pestañas"]="true";
-    echo $this->miFormulario->listaNoOrdenada($atributos);
-
-
-    $atributos["id"]="tabProceso";
-    $atributos["estilo"]="";
-    echo $this->miFormulario->division("inicio",$atributos);
-
+//    echo $this->miFormulario->listaNoOrdenada($atributos);
 
     $esteBloque = $this->miConfigurador->getVariableConfiguracion("esteBloque");
     $rutaBloque = $this->miConfigurador->getVariableConfiguracion("host");
@@ -78,6 +71,9 @@ if (isset($_REQUEST['proceso'])) {
 
     $nombreFormulario = $esteBloque["nombre"];
 
+    $atributos["id"]="tabProceso";
+    $atributos["estilo"]="";
+   echo $this->miFormulario->division("inicio",$atributos);
 
     $tab = 1;
 
@@ -150,11 +146,7 @@ if (isset($_REQUEST['proceso'])) {
     echo $this->miFormulario->campoCuadroTexto($atributos);
     unset($atributos);
 
-
     echo $this->miFormulario->division("fin");
-
-
-
 
     $atributos["id"] = "formSaraData"; //No cambiar este nombre
     $atributos["tipo"] = "hidden";
@@ -167,7 +159,7 @@ if (isset($_REQUEST['proceso'])) {
 
     echo $this->miFormulario->formulario("fin");
     echo $this->miFormulario->division("fin");
-    echo $this->miFormulario->division("fin");
+  //  echo $this->miFormulario->division("fin");
 
 
 } else {

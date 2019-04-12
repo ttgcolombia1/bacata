@@ -17,15 +17,13 @@ if(!isset($GLOBALS["autorizado"]))
     $resultadoProcesos = $esteRecursoDB->ejecutarAcceso($cadena_sql, "busqueda");
 
     if($resultadoProcesos){
-
         // Redireccionar a la vista de listado
         $votante = array($resultadoProcesos[0]['identificacion'],$resultadoProcesos[0]['procesoelectoral_idprocesoelectoral']);
         $this->funcion->redireccionar("votanteEncontrado",$votante);
 
     }else{
-
-        $this->funcion->redireccionar("votanteNoEncontrado");
-
+        $votante = array($_REQUEST['identificacionVotante'],$_REQUEST['proceso']);
+        $this->funcion->redireccionar("votanteNoEncontrado",$votante);
     }
 
 

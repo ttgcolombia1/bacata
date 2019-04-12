@@ -49,6 +49,8 @@ if (!isset($GLOBALS["autorizado"])) {
             $variable = "pagina=" . $miPaginaActual;
             $variable .= "&opcion=mensaje";
             $variable .= "&mensaje=votanteNoEncontrado";
+            $variable .= "&identificacion=$valor[0]";
+            $variable .= "&proceso=$valor[1]";
             break;
 
         case "votanteEncontrado":

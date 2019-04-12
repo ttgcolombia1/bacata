@@ -26,10 +26,9 @@ $proceso = $_REQUEST['proceso'];
 $consulta = array($identificacion, "", $proceso);
 $cadena_sql = $this->sql->cadena_sql("validarDatoCenso", $consulta);
 $resultado = $esteRecursoDB->ejecutarAcceso($cadena_sql, "busqueda");
-
 if ($resultado) {
 
-    echo "<div class='datagrid'><table id='tablaProcesosActivos'>";
+    echo "<div ><table id='tablaProcesosActivos' width='100%'>";
     echo "<thead>
                 <tr>
                     <th>Identificacion</th>

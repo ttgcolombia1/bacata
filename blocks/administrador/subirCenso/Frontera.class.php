@@ -50,8 +50,6 @@ class FronteraSubirCenso{
 		include_once("core/builder/FormularioHtml.class.php");
 
 		$this->ruta=$this->miConfigurador->getVariableConfiguracion("rutaBloque");
-
-
 		$this->miFormulario=new formularioHtml();
 
 		if(isset($_REQUEST['opcion'])){
@@ -87,7 +85,8 @@ class FronteraSubirCenso{
                                     include_once($this->ruta."formulario/consulta.php");
                                     break;
                                 case "detalleVotante":
-                                    include_once($this->ruta."formulario/detalleVotante.php");
+                                    include_once($this->ruta."formulario/consulta.php");
+				    include_once($this->ruta."formulario/detalleVotante.php");
                                     break;
 				case "cargarClaves":
 					include_once($this->ruta."formulario/progresoClaves.php");

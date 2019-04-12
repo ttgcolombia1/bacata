@@ -40,7 +40,7 @@ $enlaceCenso['nombre'] = "Gestión Censo";
 $enlaceSubirCenso['enlace'] = "pagina=subirCenso";
 $enlaceSubirCenso['enlace'].= "&usuario=" . $miSesion->getSesionUsuarioId();
 $enlaceSubirCenso['urlCodificada'] = $this->miConfigurador->fabricaConexiones->crypto->codificar_url($enlaceSubirCenso['enlace'], $directorio);
-$enlaceSubirCenso['nombre'] = "Carga Censo Electoral";
+$enlaceSubirCenso['nombre'] = "Gestión Censo Electoral";
 
 //Modificar el censo electoral
 $enlaceModificarCenso['enlace'] = "pagina=votoTarjeton";
